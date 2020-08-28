@@ -18,7 +18,8 @@ function search(){
       
 /**The showReslut function shows all the search result to the user.*/
 function showResult(rawSongs){
-  
+  if(lyricContainer.firstChild)
+  lyricContainer.removeChild(lyricContainer.firstChild);
   // removes all the previous search result.
   while (resultContainer.firstChild) {
    resultContainer.removeChild(resultContainer.firstChild);
@@ -31,7 +32,8 @@ function showResult(rawSongs){
     return;
   }
   
-  songs = rawSongs.map(item => ({title: item.title,
+  songs = rawSongs.map(item => (
+    {title: item.title,
     author: item.artist.name,
     album: item.album.title
     }));
