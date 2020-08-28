@@ -33,6 +33,7 @@ function showResult(rawSongs) {
     const child = document.createElement('div');
     child.innerHTML = `<p class="text-center"> Sorry no songs found :( </p>`;
     result.appendChild(child);
+    animation.style.display = 'none';
     return;
   }
   
