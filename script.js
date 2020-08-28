@@ -18,7 +18,10 @@ function search(){
       
 /**The showReslut function shows all the search result to the user.*/
 function showResult(rawSongs){
-  
+  if(lyricContainer.firstChild)
+  lyricContainer.removeChild(lyricContainer.firstChild);
+  lyricContainer.style.display = 'none';
+   
   // removes all the previous search result.
   while (resultContainer.firstChild) {
    resultContainer.removeChild(resultContainer.firstChild);
@@ -31,7 +34,8 @@ function showResult(rawSongs){
     return;
   }
   
-  songs = rawSongs.map(item => ({title: item.title,
+  songs = rawSongs.map(item => (
+    {title: item.title,
     author: item.artist.name,
     album: item.album.title
     }));
@@ -50,6 +54,7 @@ function showResult(rawSongs){
     </div>
     </div>`;
     resultContainer.appendChild(child);
+    result.style.display = 'block';
   } 
 }
 
@@ -105,8 +110,3 @@ searchItem.addEventListener('focusout', () => isFocused = false);
 resultContainer.addEventListener('click', getLyrics);
 document.getElementById('search').addEventListener('click', search);
 document.getElementById('lyricContainer').addEventListener('click', goBack);
-
-
-
-
-
